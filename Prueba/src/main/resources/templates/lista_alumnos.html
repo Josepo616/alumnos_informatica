@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista de Alumnos</title>
+  <style>
+    /* Estilos para la tabla */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+<h2>Lista de Alumnos</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nombres</th>
+    <th>Apellidos</th>
+    <th>Grado</th>
+    <th>Sección</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="alumno : ${alumnos}">
+    <td th:text="${alumno.nombres}"></td>
+    <td th:text="${alumno.apellidos}"></td>
+    <td th:text="${alumno.grado}"></td>
+    <td th:text="${alumno.seccion}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<br/>
+<a href="/registro">Registrar Nuevo Alumno</a>
+</body>
+</html>

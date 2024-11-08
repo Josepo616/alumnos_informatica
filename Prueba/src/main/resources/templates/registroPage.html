@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Registro de Alumno</title>
+  <style>
+    /* Estilo global */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Contenedor del formulario */
+    form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* Estilo para los campos de entrada */
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    /* Estilo para el botón de envío */
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    /* Mensaje de éxito */
+    div {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    p {
+      color: green;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+<form th:action="@{/registro}" th:object="${alumno}" method="post">
+  <h2>Registro de Alumno</h2>
+
+  <label for="nombres">Nombres:</label>
+  <input type="text" id="nombres" th:field="*{nombres}" required />
+
+  <label for="apellidos">Apellidos:</label>
+  <input type="text" id="apellidos" th:field="*{apellidos}" required />
+
+  <label for="grado">Grado:</label>
+  <input type="text" id="grado" th:field="*{grado}" required />
+
+  <label for="seccion">Sección:</label>
+  <input type="text" id="seccion" th:field="*{seccion}" required />
+
+  <button type="submit">Registrar Alumno</button>
+</form>
+
+<div th:if="${param.success}">
+  <p>Registro exitoso!</p>
+</div>
+</body>
+</html>
